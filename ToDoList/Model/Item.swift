@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Item {
+struct Item : Codable {
     var title: String = ""
     var mark: Bool = false
 }
+
+
+
+
+

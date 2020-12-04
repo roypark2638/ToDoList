@@ -5,12 +5,13 @@
 import UIKit
 
 class TableViewController: UITableViewController {
-
+    
     var itemList = [Item]()
     let cellIdentifier = "ToDoList"
     let newItemKey = "newItemKey"
     
-    let defaults = UserDefaults()
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        .first?.appendingPathComponent("Items.plist")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +27,12 @@ class TableViewController: UITableViewController {
         item.title = "Third"
         itemList.append(item)
         
-        if let safeDefaults = defaults.dictionary(forKey: newItemKey) as? Item {
-            itemList.append(safeDefaults)
-        }
+        loadItem()
         
     }
-
+    
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-            
+        
         var textField = UITextField()
         let alert = UIAlertController(title: "ADD NEW ITEM", message: "", preferredStyle: .alert)
         
@@ -42,13 +41,11 @@ class TableViewController: UITableViewController {
                 var item = Item()
                 item.title = newItemText
                 self.itemList.append(item)
-                self.defaults.set(item, forKey: self.newItemKey)
                 
-                self.tableView.reloadData()
+                self.saveItems()
+                
             }
-            
-            
-            self.dismiss(animated: true, completion: nil)
+            //            self.dismiss(animated: true, completion: nil)
         }
         
         alert.addTextField { (alertTextField) in
@@ -76,7 +73,6 @@ class TableViewController: UITableViewController {
         
         // Ternary operator ==>
         // value = condition ? true : false
-        print("callForRow is called")
         cell.accessoryType = selectedItem.mark ? .checkmark : .none
         
         return cell
@@ -84,16 +80,41 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        var selectedItem = itemList[indexPath.row]
-//        selectedItem.mark = !selectedItem.mark
+        //        var selectedItem = itemList[indexPath.row]
+        //        selectedItem.mark = !selectedItem.mark
         itemList[indexPath.row].mark = !itemList[indexPath.row].mark
         
-        tableView.reloadData()
+        saveItems()
         
         tableView.deselectRow(at: indexPath, animated: true)
         
         
     }
     
+    //MARK: Model Manupulation Methods.
     
+    func saveItems() {
+        
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(itemList)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Error encoding item list, \(error)")
+        }
+        
+        self.tableView.reloadData()
+    }
+    func loadItem() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            
+            do {
+                itemList = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("Error decoding item list, \(error)")
+            }
+        }
+    }
 }
