@@ -3,30 +3,24 @@
 // user defaults
 
 import UIKit
+import CoreData
 
 class TableViewController: UITableViewController {
     
     var itemList = [Item]()
     let cellIdentifier = "ToDoList"
     let newItemKey = "newItemKey"
+    let context = (UIApplication.shared.delegate as! AppDelegate)
+        .persistentContainer.viewContext
     
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        .first?.appendingPathComponent("Items.plist")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        var item = Item()
-        item.title = "First"
-        itemList.append(item)
-        
-        item.title = "Second"
-        itemList.append(item)
-        
-        item.title = "Third"
-        itemList.append(item)
-        
+        let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            .first?.appendingPathComponent("Items.plist")
+        print(dataFilePath)
         loadItem()
         
     }
@@ -38,11 +32,14 @@ class TableViewController: UITableViewController {
         
         let addAction = UIAlertAction(title: "ADD", style: .default) { (action) in
             if let newItemText = textField.text {
-                var item = Item()
+                
+                let item = Item(context: self.context)
                 item.title = newItemText
+                item.mark = false
                 self.itemList.append(item)
                 
                 self.saveItems()
+            
                 
             }
             //            self.dismiss(animated: true, completion: nil)
@@ -82,7 +79,12 @@ class TableViewController: UITableViewController {
         
         //        var selectedItem = itemList[indexPath.row]
         //        selectedItem.mark = !selectedItem.mark
-        itemList[indexPath.row].mark = !itemList[indexPath.row].mark
+        
+        context.delete(itemList[indexPath.row])
+        itemList.remove(at: indexPath.row)
+        
+        //itemList[indexPath.row].setValue("Complted", forKey: "title") // another way to update the NSManageObject
+//        itemList[indexPath.row].mark = !itemList[indexPath.row].mark
         
         saveItems()
         
@@ -94,27 +96,23 @@ class TableViewController: UITableViewController {
     //MARK: Model Manupulation Methods.
     
     func saveItems() {
-        
-        let encoder = PropertyListEncoder()
-        
         do {
-            let data = try encoder.encode(itemList)
-            try data.write(to: dataFilePath!)
+            try context.save()
         } catch {
-            print("Error encoding item list, \(error)")
+            print("Error saving context \(error)")
         }
         
         self.tableView.reloadData()
     }
     func loadItem() {
-        if let data = try? Data(contentsOf: dataFilePath!) {
-            let decoder = PropertyListDecoder()
-            
-            do {
-                itemList = try decoder.decode([Item].self, from: data)
-            } catch {
-                print("Error decoding item list, \(error)")
-            }
+        // most of caess in swift you don't have to specify the type
+        // but in this case, you have to. The entity that you are tying to request.
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            itemList = try context.fetch(request)
+        } catch {
+            print("Error fetching data from contest \(error)")
         }
+        
     }
 }
