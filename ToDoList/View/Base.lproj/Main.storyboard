@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,13 +17,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoList" id="Kzv-4X-w1K" userLabel="CategoryCell">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="Kzv-4X-w1K" userLabel="CategoryCell" customClass="CategoryCell" customModule="ToDoList" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kzv-4X-w1K" id="04b-pP-mN7">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-calendar-500" translatesAutoresizingMaskIntoConstraints="NO" id="WcX-Pf-F5C">
+                                            <rect key="frame" x="20" y="23" width="35" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTw-VE-xYv">
+                                            <rect key="frame" x="71" y="23" width="273" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cellImageIcon" destination="WcX-Pf-F5C" id="tee-K8-0LR"/>
+                                    <outlet property="cellTextLabel" destination="CTw-VE-xYv" id="fIi-u5-DLB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -35,6 +53,9 @@
                             <color key="tintColor" red="0.97647058819999999" green="0.86274509799999999" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="addButtonPressed:" destination="SaB-4c-ZsL" id="UeH-vu-DyJ"/>
+                                <segue destination="Ppi-Kf-zde" kind="popoverPresentation" identifier="goToAdd" popoverAnchorBarButtonItem="7hy-sz-Yky" id="U37-Qc-k4n">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -44,7 +65,281 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZSx-hM-gzi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1571" y="90"/>
+            <point key="canvasLocation" x="1486.9565217391305" y="89.732142857142847"/>
+        </scene>
+        <!--Add View Controller-->
+        <scene sceneID="3em-nm-Gwb">
+            <objects>
+                <viewController id="Ppi-Kf-zde" customClass="AddViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pwa-TZ-2F4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rb6-8i-Unt">
+                                <rect key="frame" x="19" y="156" width="375" height="202"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="fed-TK-Xfh">
+                                        <rect key="frame" x="10" y="10" width="355" height="182"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="3iP-h0-Jqn">
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="46"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" highlighted="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Op-2P-PmM">
+                                                        <rect key="frame" x="0.0" y="0.0" width="47.5" height="46"/>
+                                                        <size key="titleShadowOffset" width="10" height="10"/>
+                                                        <state key="normal" title="Button" image="icons8-bookmark-500"/>
+                                                        <state key="selected" image="icons8-bookmark-500"/>
+                                                        <state key="highlighted" image="icons8-bookmark-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="iwl-TA-sDO"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDw-Mi-77R">
+                                                        <rect key="frame" x="51.5" y="0.0" width="47" height="46"/>
+                                                        <state key="normal" title="Button" image="icons8-calendar-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="ETe-DK-QmV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPM-tW-eSU">
+                                                        <rect key="frame" x="102.5" y="0.0" width="47.5" height="46"/>
+                                                        <state key="normal" title="Button" image="icons8-document-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="HMs-ma-08k"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tL6-Ew-yhI">
+                                                        <rect key="frame" x="154" y="0.0" width="47" height="46"/>
+                                                        <state key="normal" title="Button" image="icons8-menu-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="Ix0-mX-xC6"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKb-pi-SpW">
+                                                        <rect key="frame" x="205" y="0.0" width="47.5" height="46"/>
+                                                        <state key="normal" title="Button" image="icons8-money-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="pg4-Qu-2Bd"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2X-Om-8Fk">
+                                                        <rect key="frame" x="256.5" y="0.0" width="47" height="46"/>
+                                                        <state key="normal" title="Button" image="icons8-organization-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="ZNN-HT-sBc"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSo-te-u5J">
+                                                        <rect key="frame" x="307.5" y="0.0" width="47.5" height="46"/>
+                                                        <state key="normal" title="Button" image="icons8-school-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="aYI-Ou-Iiq"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="355" id="IXa-ul-kbG"/>
+                                                    <constraint firstAttribute="height" constant="46" id="iwJ-GP-Yac"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="dZf-nb-j5c">
+                                                <rect key="frame" x="0.0" y="64" width="355" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLL-gm-1go">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-search-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="Vfa-zX-j88"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xwp-fz-wwa">
+                                                        <rect key="frame" x="51" y="0.0" width="49.5" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-pricing-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="0hd-Au-dG0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUp-An-SPF">
+                                                        <rect key="frame" x="101.5" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-shopping-cart-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="wPn-Pc-Wop"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNH-Fz-r7M">
+                                                        <rect key="frame" x="152.5" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-airport-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="DLL-7X-DTm"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="98G-57-xc0">
+                                                        <rect key="frame" x="203.5" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-driver-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="CzO-CW-oKZ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36T-qh-uwg">
+                                                        <rect key="frame" x="254.5" y="0.0" width="49.5" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-motorbike-helmet-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="3Md-N7-SBA"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnd-Ni-1Gz">
+                                                        <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-sedan-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="P53-mb-C9k"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="JwQ-ag-7Qz"/>
+                                                    <constraint firstAttribute="width" constant="355" id="jpr-Qw-2vq"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="deK-rA-Nfg">
+                                                <rect key="frame" x="0.0" y="132" width="355" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwK-4u-5kJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-truck-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="1Ch-Cv-buo"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRA-em-ks0">
+                                                        <rect key="frame" x="51" y="0.0" width="49.5" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-bicycle-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="UjP-os-X3i"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRD-hV-pgO">
+                                                        <rect key="frame" x="101.5" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-movie-ticket-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="zm2-g4-L8n"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgD-dC-EGn">
+                                                        <rect key="frame" x="152.5" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-music-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="nTm-KX-fkV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUu-vC-Vk2">
+                                                        <rect key="frame" x="203.5" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-packaging-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="Swx-Un-IiP"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcO-nG-c7B">
+                                                        <rect key="frame" x="254.5" y="0.0" width="49.5" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-key-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="g4v-My-oYL"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COS-cl-TLi">
+                                                        <rect key="frame" x="305" y="0.0" width="50" height="50"/>
+                                                        <state key="normal" title="Button" image="icons8-mailbox-500"/>
+                                                        <connections>
+                                                            <action selector="iconButtonSelected:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="fgG-Qk-vfP"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="355" id="ABC-Dq-GNC"/>
+                                                    <constraint firstAttribute="height" constant="50" id="LvY-UU-ffW"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fed-TK-Xfh" secondAttribute="trailing" constant="10" id="ES9-8P-NPx"/>
+                                    <constraint firstItem="fed-TK-Xfh" firstAttribute="leading" secondItem="rb6-8i-Unt" secondAttribute="leading" constant="10" id="FS7-th-wZg"/>
+                                    <constraint firstItem="fed-TK-Xfh" firstAttribute="top" secondItem="rb6-8i-Unt" secondAttribute="top" constant="10" id="RIt-Kt-w3t"/>
+                                    <constraint firstAttribute="bottom" secondItem="fed-TK-Xfh" secondAttribute="bottom" constant="10" id="gHV-lL-vIj"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X6q-wE-hUv">
+                                <rect key="frame" x="20" y="69" width="375" height="45.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.47843137250000001" green="0.42352941179999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.47843137250000001" green="0.46274509800000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6e-GJ-Vaf">
+                                <rect key="frame" x="369" y="24" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.97647058819999999" green="0.86274509799999999" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" image="plus" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="bhJ-gy-Yav"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhO-6s-jvZ">
+                                <rect key="frame" x="19" y="24" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.97647058819999999" green="0.86274509799999999" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" image="xmark" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="sRa-2n-B77"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DGl-oq-UHr"/>
+                        <color key="backgroundColor" red="0.47843137250000001" green="0.42352941179999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="rb6-8i-Unt" firstAttribute="top" secondItem="X6q-wE-hUv" secondAttribute="bottom" constant="41.5" id="08R-Hg-bA7"/>
+                            <constraint firstItem="rb6-8i-Unt" firstAttribute="leading" secondItem="DGl-oq-UHr" secondAttribute="leading" constant="20" id="4LE-z7-mRx"/>
+                            <constraint firstItem="X6q-wE-hUv" firstAttribute="top" secondItem="DGl-oq-UHr" secondAttribute="top" constant="69" id="JDW-KP-B7F"/>
+                            <constraint firstItem="DGl-oq-UHr" firstAttribute="trailing" secondItem="rb6-8i-Unt" secondAttribute="trailing" constant="20" id="RYH-HD-4y5"/>
+                            <constraint firstItem="X6q-wE-hUv" firstAttribute="leading" secondItem="DGl-oq-UHr" secondAttribute="leading" constant="20" id="nKn-Sz-bQS"/>
+                            <constraint firstItem="DGl-oq-UHr" firstAttribute="trailing" secondItem="X6q-wE-hUv" secondAttribute="trailing" constant="20" id="uXt-L1-TC4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageBoxLayout" destination="rb6-8i-Unt" id="bfV-co-vG4"/>
+                        <outlet property="textField" destination="X6q-wE-hUv" id="0xz-HU-Do0"/>
+                        <outletCollection property="imageButtons" destination="9Op-2P-PmM" collectionClass="NSMutableArray" id="UQZ-wx-abZ"/>
+                        <outletCollection property="imageButtons" destination="TDw-Mi-77R" collectionClass="NSMutableArray" id="YdH-Xu-Csq"/>
+                        <outletCollection property="imageButtons" destination="KPM-tW-eSU" collectionClass="NSMutableArray" id="wTC-uq-x07"/>
+                        <outletCollection property="imageButtons" destination="tL6-Ew-yhI" collectionClass="NSMutableArray" id="0rA-7G-6aG"/>
+                        <outletCollection property="imageButtons" destination="nKb-pi-SpW" collectionClass="NSMutableArray" id="rDU-q0-nHp"/>
+                        <outletCollection property="imageButtons" destination="r2X-Om-8Fk" collectionClass="NSMutableArray" id="IW9-Fd-vyn"/>
+                        <outletCollection property="imageButtons" destination="mSo-te-u5J" collectionClass="NSMutableArray" id="enF-sn-xlA"/>
+                        <outletCollection property="imageButtons" destination="RLL-gm-1go" collectionClass="NSMutableArray" id="jCk-id-Bpw"/>
+                        <outletCollection property="imageButtons" destination="Xwp-fz-wwa" collectionClass="NSMutableArray" id="aey-6Z-9Oy"/>
+                        <outletCollection property="imageButtons" destination="kUp-An-SPF" collectionClass="NSMutableArray" id="2KD-eM-tBb"/>
+                        <outletCollection property="imageButtons" destination="tNH-Fz-r7M" collectionClass="NSMutableArray" id="Lp5-KJ-pfN"/>
+                        <outletCollection property="imageButtons" destination="98G-57-xc0" collectionClass="NSMutableArray" id="iyV-1A-m08"/>
+                        <outletCollection property="imageButtons" destination="36T-qh-uwg" collectionClass="NSMutableArray" id="UhL-M5-5pl"/>
+                        <outletCollection property="imageButtons" destination="cnd-Ni-1Gz" collectionClass="NSMutableArray" id="sBE-M2-4F0"/>
+                        <outletCollection property="imageButtons" destination="iwK-4u-5kJ" collectionClass="NSMutableArray" id="sYB-bp-eoQ"/>
+                        <outletCollection property="imageButtons" destination="sRA-em-ks0" collectionClass="NSMutableArray" id="P40-ad-hC2"/>
+                        <outletCollection property="imageButtons" destination="jRD-hV-pgO" collectionClass="NSMutableArray" id="Ewi-wc-VLG"/>
+                        <outletCollection property="imageButtons" destination="bgD-dC-EGn" collectionClass="NSMutableArray" id="TPl-JC-20W"/>
+                        <outletCollection property="imageButtons" destination="vUu-vC-Vk2" collectionClass="NSMutableArray" id="gZ0-af-3nO"/>
+                        <outletCollection property="imageButtons" destination="CcO-nG-c7B" collectionClass="NSMutableArray" id="bSI-ge-q1p"/>
+                        <outletCollection property="imageButtons" destination="COS-cl-TLi" collectionClass="NSMutableArray" id="Hdu-Ib-cC4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dYY-s3-4xs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2344.9275362318845" y="-299.33035714285711"/>
         </scene>
         <!--To Do List-->
         <scene sceneID="YLR-ZS-isn">
@@ -66,7 +361,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Items" id="VCf-L7-pNw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="VCf-L7-pNw" customClass="SwipeTableViewCell" customModule="SwipeCellKit">
                                 <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VCf-L7-pNw" id="3l3-Rd-Sns">
@@ -92,7 +387,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HqK-4E-PXp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2558" y="90"/>
+            <point key="canvasLocation" x="3155" y="90"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kga-CM-fsR">
@@ -100,7 +395,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fPV-h8-Pq8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="r10-nB-KYP">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,10 +412,33 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X5z-ow-5Za" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633.33333333333337" y="90.401785714285708"/>
+            <point key="canvasLocation" x="713" y="90"/>
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-airport-500" width="166.5" height="166.5"/>
+        <image name="icons8-bicycle-500" width="166.5" height="166.5"/>
+        <image name="icons8-bookmark-500" width="166.5" height="166.5"/>
+        <image name="icons8-calendar-500" width="166.5" height="166.5"/>
+        <image name="icons8-document-500" width="166.5" height="166.5"/>
+        <image name="icons8-driver-500" width="166.5" height="166.5"/>
+        <image name="icons8-key-500" width="166.5" height="166.5"/>
+        <image name="icons8-mailbox-500" width="166.5" height="166.5"/>
+        <image name="icons8-menu-500" width="166.5" height="166.5"/>
+        <image name="icons8-money-500" width="166.5" height="166.5"/>
+        <image name="icons8-motorbike-helmet-500" width="166.5" height="166.5"/>
+        <image name="icons8-movie-ticket-500" width="166.5" height="166.5"/>
+        <image name="icons8-music-500" width="166.5" height="166.5"/>
+        <image name="icons8-organization-500" width="166.5" height="166.5"/>
+        <image name="icons8-packaging-500" width="166.5" height="166.5"/>
+        <image name="icons8-pricing-500" width="166.5" height="166.5"/>
+        <image name="icons8-school-500" width="166.5" height="166.5"/>
+        <image name="icons8-search-500" width="166.5" height="166.5"/>
+        <image name="icons8-sedan-500" width="166.5" height="166.5"/>
+        <image name="icons8-shopping-cart-500" width="166.5" height="166.5"/>
+        <image name="icons8-truck-500" width="166.5" height="166.5"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
