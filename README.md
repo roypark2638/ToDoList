@@ -3,7 +3,7 @@
 
 ![TO DO LIST](https://user-images.githubusercontent.com/47404333/102040770-946ac480-3d82-11eb-96e1-22b73344d62f.png)
 
-<img src="http://g.recordit.co/9PmWEhLxQR.gif" width="280" height="620"> <img src="https://user-images.githubusercontent.com/47404333/102041521-874ed500-3d84-11eb-8be1-004e432659bf.png" width="280" height="620"> <img src="https://user-images.githubusercontent.com/47404333/102041538-9170d380-3d84-11eb-8ccd-abc19374eee0.png" width="280" height="620">
+<img src="http://g.recordit.co/9PmWEhLxQR.gif" width="220" height="500"> <img src="https://user-images.githubusercontent.com/47404333/102041521-874ed500-3d84-11eb-8be1-004e432659bf.png" width="220" height="500"> <img src="https://user-images.githubusercontent.com/47404333/102041538-9170d380-3d84-11eb-8ccd-abc19374eee0.png" width="220" height="500">
 
 </p>
 
