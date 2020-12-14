@@ -84,7 +84,9 @@ Clone the repo
    
 ### CocoaPods Install   
 pod 'RealmSwift'
+
 pod 'SwipeCellKit'
+
 pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'
 
 
