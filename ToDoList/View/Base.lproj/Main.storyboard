@@ -299,6 +299,18 @@
                                     <action selector="cancelButtonPressed:" destination="Ppi-Kf-zde" eventType="touchUpInside" id="sRa-2n-B77"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ujs-5l-mcN">
+                                <rect key="frame" x="20" y="375" width="374" height="257"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="spw-Ky-kd5">
+                                    <size key="itemSize" width="38" height="38"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DGl-oq-UHr"/>
                         <color key="backgroundColor" red="0.47843137250000001" green="0.42352941179999998" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -312,6 +324,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="ujs-5l-mcN" id="sas-fm-HLJ"/>
                         <outlet property="imageBoxLayout" destination="rb6-8i-Unt" id="bfV-co-vG4"/>
                         <outlet property="textField" destination="X6q-wE-hUv" id="0xz-HU-Do0"/>
                         <outletCollection property="imageButtons" destination="9Op-2P-PmM" collectionClass="NSMutableArray" id="UQZ-wx-abZ"/>
@@ -395,7 +408,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fPV-h8-Pq8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="r10-nB-KYP">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

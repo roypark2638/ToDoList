@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="jO5-VF-LBH" customClass="IconCollectionViewCell" customModule="ToDoList" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="127" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CB5-aQ-fYf">
+                    <rect key="frame" x="0.0" y="0.0" width="127" height="120"/>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="WP9-pj-T4L"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="CB5-aQ-fYf" firstAttribute="top" secondItem="jO5-VF-LBH" secondAttribute="top" id="3eU-HR-Wv9"/>
+                <constraint firstItem="WP9-pj-T4L" firstAttribute="bottom" secondItem="CB5-aQ-fYf" secondAttribute="bottom" id="D8Q-R9-KC8"/>
+                <constraint firstItem="CB5-aQ-fYf" firstAttribute="leading" secondItem="WP9-pj-T4L" secondAttribute="leading" id="WLf-zY-aML"/>
+                <constraint firstItem="WP9-pj-T4L" firstAttribute="trailing" secondItem="CB5-aQ-fYf" secondAttribute="trailing" id="yn2-FC-NxJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="testImage" destination="CB5-aQ-fYf" id="dGQ-Fj-4FZ"/>
+            </connections>
+            <point key="canvasLocation" x="123.91304347826087" y="-22.767857142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

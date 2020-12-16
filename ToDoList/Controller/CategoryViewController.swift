@@ -67,32 +67,7 @@ class CategoryViewController: SwipeTableViewController {
         }
         
     }
-//    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-//        var textField = UITextField()
-//
-//        let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
-//        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-//
-//
-//            if textField.text! != "" { // if it's empty, don't create the new list
-//                let newCategory = Category()
-//                newCategory.name = textField.text!
-//                newCategory.cellColor = UIColor.randomFlat().hexValue()
-//                self.save(newCategory)
-//                self.tableView.reloadData()
-//            }
-//        }
-//
-//
-//        alert.addTextField { (alertTextField) in
-//            alertTextField.placeholder = "Type new category"
-//            textField = alertTextField
-//        }
-//        alert.addAction(action)
-//
-//        present(alert, animated: true, completion: nil)
-//
-//    }
+
     
     //MARK: TableViewDataSource Methods
     
@@ -102,17 +77,12 @@ class CategoryViewController: SwipeTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SwipeTableViewCell
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! CategoryCell
         if let newCategory = categoryList?[indexPath.row] {
             cell.setCategory(category: newCategory)
-//            cell.categoryLabel.text = newCategory.name ?? "No Categories are added yet"
-//            cell.textLabel?.text = newCategory.name ?? "No Categories are added yet"
-//            cell.backgroundColor = UIColor(hexString: newCategory.cellColor ?? "999999")
+
         }
-//        cell.textLabel?.text = categoryList?[indexPath.row].name ?? "No Categories are added yet"
-//        cell.backgroundColor = UIColor(hexString: categoryList?[indexPath.row].cellColor ?? "999999")
-//        cell.delegate = self
+
         return cell
     }
     
@@ -167,13 +137,6 @@ class CategoryViewController: SwipeTableViewController {
         
         categoryList = realm.objects(Category.self)
         tableView.reloadData()
-//        with request: NSFetchRequest<Category> = Category.fetchRequest()
-//        do {
-//            categoryList = try context.fetch(request)
-//        } catch {
-//            print("Error loading categoryList \(error)")
-//        }
-//
       
     }
 }

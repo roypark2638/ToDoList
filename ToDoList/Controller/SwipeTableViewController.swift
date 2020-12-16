@@ -31,15 +31,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             self.updateModel(at: indexPath)
-//            if let selectedCategory = self.categoryList?[indexPath.row] {
-//                do {
-//                    try self.realm.write {
-//                        self.realm.delete(selectedCategory)
-//                    }
-//                } catch {
-//                    print("Error deleting the category \(error)")
-//                }
-//            }
+
         }
         
         // customize the action appearance

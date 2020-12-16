@@ -7,7 +7,14 @@
 
 import Foundation
 
-struct ImageTitles {
+struct ImageTitle {        
+    static let imageTitles = [
+        "icons8-bookmark-500",
+        "icons8-bookmark-500",
+        "icons8-calendar-500",
+        "icons8-calendar-500"
+    ]
+    
     static let imageTitleDictionary = [
         "":"icons8-bookmark-500",
         "bookmark":"icons8-bookmark-500",

@@ -16,9 +16,12 @@
 		9737F642257AE95A0025A78E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9737F640257AE95A0025A78E /* Main.storyboard */; };
 		9737F644257AE95B0025A78E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9737F643257AE95B0025A78E /* Assets.xcassets */; };
 		9737F647257AE95B0025A78E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9737F645257AE95B0025A78E /* LaunchScreen.storyboard */; };
+		9766C85E2589B1FD004E0571 /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766C85C2589B1FD004E0571 /* IconCollectionViewCell.swift */; };
+		9766C85F2589B1FD004E0571 /* IconCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9766C85D2589B1FD004E0571 /* IconCollectionViewCell.xib */; };
+		9766C88B2589E079004E0571 /* IconImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9766C88A2589E079004E0571 /* IconImage.swift */; };
 		977BE54F2585C3E40063C620 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977BE54E2585C3E40063C620 /* SwipeTableViewController.swift */; };
 		977BE57925860FAC0063C620 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977BE57825860FAC0063C620 /* AddViewController.swift */; };
-		977BE57C258623240063C620 /* ImageTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977BE57B258623240063C620 /* ImageTitles.swift */; };
+		977BE57C258623240063C620 /* ImageTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977BE57B258623240063C620 /* ImageTitle.swift */; };
 		977BE57F2586F0D00063C620 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977BE57E2586F0D00063C620 /* CategoryCell.swift */; };
 		97CF5826257C9C1200EA4E01 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97CF5825257C9C1200EA4E01 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
@@ -35,9 +38,12 @@
 		9737F643257AE95B0025A78E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9737F646257AE95B0025A78E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9737F648257AE95B0025A78E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9766C85C2589B1FD004E0571 /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
+		9766C85D2589B1FD004E0571 /* IconCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IconCollectionViewCell.xib; sourceTree = "<group>"; };
+		9766C88A2589E079004E0571 /* IconImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconImage.swift; sourceTree = "<group>"; };
 		977BE54E2585C3E40063C620 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		977BE57825860FAC0063C620 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		977BE57B258623240063C620 /* ImageTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitles.swift; sourceTree = "<group>"; };
+		977BE57B258623240063C620 /* ImageTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitle.swift; sourceTree = "<group>"; };
 		977BE57E2586F0D00063C620 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		97CF5825257C9C1200EA4E01 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		F3F00D970EA0283CE1FC3C3F /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +107,7 @@
 				9737F651257AE9680025A78E /* View */,
 				9737F652257AE9700025A78E /* Supporting Files */,
 				9737F648257AE95B0025A78E /* Info.plist */,
+				977BE57B258623240063C620 /* ImageTitle.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -109,10 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				97CF5825257C9C1200EA4E01 /* CategoryViewController.swift */,
+				977BE57825860FAC0063C620 /* AddViewController.swift */,
 				9737F63E257AE95A0025A78E /* ToDoListViewController.swift */,
 				977BE54E2585C3E40063C620 /* SwipeTableViewController.swift */,
-				977BE57825860FAC0063C620 /* AddViewController.swift */,
-				977BE57B258623240063C620 /* ImageTitles.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -122,6 +128,8 @@
 			children = (
 				9737F640257AE95A0025A78E /* Main.storyboard */,
 				977BE57E2586F0D00063C620 /* CategoryCell.swift */,
+				9766C85C2589B1FD004E0571 /* IconCollectionViewCell.swift */,
+				9766C85D2589B1FD004E0571 /* IconCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 			children = (
 				972A92802584671800538DA6 /* Item.swift */,
 				972A92842584672100538DA6 /* Category.swift */,
+				9766C88A2589E079004E0571 /* IconImage.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -206,6 +215,7 @@
 				9737F647257AE95B0025A78E /* LaunchScreen.storyboard in Resources */,
 				9737F644257AE95B0025A78E /* Assets.xcassets in Resources */,
 				9737F642257AE95A0025A78E /* Main.storyboard in Resources */,
+				9766C85F2589B1FD004E0571 /* IconCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,16 +268,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				977BE57C258623240063C620 /* ImageTitles.swift in Sources */,
+				977BE57C258623240063C620 /* ImageTitle.swift in Sources */,
 				9737F63F257AE95A0025A78E /* ToDoListViewController.swift in Sources */,
 				9737F63B257AE95A0025A78E /* AppDelegate.swift in Sources */,
 				977BE57925860FAC0063C620 /* AddViewController.swift in Sources */,
 				9737F63D257AE95A0025A78E /* SceneDelegate.swift in Sources */,
 				977BE54F2585C3E40063C620 /* SwipeTableViewController.swift in Sources */,
+				9766C88B2589E079004E0571 /* IconImage.swift in Sources */,
 				972A92812584671800538DA6 /* Item.swift in Sources */,
 				97CF5826257C9C1200EA4E01 /* CategoryViewController.swift in Sources */,
 				972A92852584672100538DA6 /* Category.swift in Sources */,
 				977BE57F2586F0D00063C620 /* CategoryCell.swift in Sources */,
+				9766C85E2589B1FD004E0571 /* IconCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
