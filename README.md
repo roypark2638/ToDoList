@@ -61,15 +61,15 @@
 <!-- ABOUT THE PROJECT -->
 ## To Do List to feature this project.
 
+* [x] Persistent task using Realm framework
+* [x] Implemented sliding feature to delete the cell.
 ### Category List
-* [x] Customize the Category List with 21 Icons.
-  * [ ] Add more Icons.
+* [x] Customize the Category List with 118 Icons.
 * [x] Eact Category has its own List to create list of things to do.
   * [ ] Display the total number of items in the category cell.
   * [ ] Create All Category session which contains all of the items.
   * [ ] Create edit button chagne the arrangment and show delete option.
   * [ ] Add color options and it will apply to title of the category from category list and item list, all of the buttons from item lists(check mark, menu, back)
-* [x] Implemented sliding feature to delete the cell.
 ### Item List
 * [x] Each cell background and font color is automatically changing for better User Interface.
 * [x] Search bar option for finding items containing the key words within the list.
